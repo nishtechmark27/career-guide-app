@@ -1,0 +1,15 @@
+{
+  "appId": "com.careerguide.studentapp",
+  "appName": "Career Guide",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "buildOptions": {
+      "releaseType": "AAB"
+    }
+  }
+}
+
