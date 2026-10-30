@@ -53,40 +53,24 @@ jobs:
       - name: Build Installable Android APK
         run: |
           cd android
-          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee apk-build.log || {
-            echo "=== APK BUILD ERROR (LAST 80 LINES) ==="
-            tail -n 80 apk-build.log
-            git config user.name "github-actions"
-            git config user.email "github-actions@github.com"
-            git checkout -B debug-logs
-            git add -f apk-build.log
-            git commit -m "chore: save apk build log [skip ci]" || true
-            git push -f origin debug-logs || true
-            exit 1
-          }
+          ./gradlew assembleDebug --no-daemon --stacktrace
 
       # Build Release AAB (Android App Bundle for Google Play Store)
       - name: Build Play Store Android AAB
         run: |
           cd android
-          ./gradlew bundleRelease --no-daemon --stacktrace 2>&1 | tee aab-build.log || {
-            echo "=== AAB BUILD ERROR (LAST 80 LINES) ==="
-            tail -n 80 aab-build.log
-            git config user.name "github-actions"
-            git config user.email "github-actions@github.com"
-            git checkout -B debug-logs
-            git add -f aab-build.log
-            git commit -m "chore: save aab build log [skip ci]" || true
-            git push -f origin debug-logs || true
-            exit 1
-          }
+          ./gradlew bundleRelease --no-daemon --stacktrace
 
       - name: Collect Release Artifacts
         run: |
           mkdir -p build-artifacts
-          find android/ -name "*.apk" -exec cp {} build-artifacts/CareerGuide-v1.0.apk \; || true
-          find android/ -name "*.aab" -exec cp {} build-artifacts/CareerGuide-v1.0.aab \; || true
-          echo "Generated Artifacts:"
+          echo "=== Finding all APKs ==="
+          find android/ -name "*.apk"
+          echo "=== Finding all AABs ==="
+          find android/ -name "*.aab"
+          cp -v $(find android/app/build/outputs/ -name "*.apk" | head -n 1) build-artifacts/CareerGuide-v1.0.apk
+          cp -v $(find android/app/build/outputs/ -name "*.aab" | head -n 1) build-artifacts/CareerGuide-v1.0.aab
+          echo "=== Contents of build-artifacts ==="
           ls -la build-artifacts/
 
       # Upload Artifacts to GitHub Actions Run for direct 1-click download
@@ -95,7 +79,7 @@ jobs:
         with:
           name: CareerGuide-Android-APK
           path: build-artifacts/CareerGuide-v1.0.apk
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
 
       - name: Upload Android AAB (Play Store)
@@ -103,7 +87,7 @@ jobs:
         with:
           name: CareerGuide-Android-AAB
           path: build-artifacts/CareerGuide-v1.0.aab
-          if-no-files-found: warn
+          if-no-files-found: error
           retention-days: 30
 
       # Create Automated GitHub Release with Download Links
