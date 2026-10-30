@@ -12,50 +12,12 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: 'pages'
-  cancel-in-progress: true
-
 jobs:
   # ---------------------------------------------------------------------------
-  # 1. BUILD & DEPLOY LIVE WEB APPLICATION TO GITHUB PAGES
-  # ---------------------------------------------------------------------------
-  deploy-web:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-
-      - name: Install Dependencies
-        run: npm ci || npm install
-
-      - name: Build Web Application
-        run: npm run build
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-  # ---------------------------------------------------------------------------
-  # 2. BUILD ANDROID APK & AAB (PLAY STORE READY)
+  # 1. BUILD ANDROID APK & AAB (PLAY STORE READY)
   # ---------------------------------------------------------------------------
   build-android:
     runs-on: ubuntu-latest
-    needs: deploy-web
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -67,7 +29,7 @@ jobs:
           cache: 'npm'
 
       - name: Install Node Dependencies
-        run: npm ci || npm install
+        run: npm install
 
       - name: Build Web Production Assets
         run: npm run build
@@ -88,70 +50,87 @@ jobs:
       - name: Grant Execute Permissions for gradlew
         run: chmod +x android/gradlew
 
-      # Build APK
-      - name: Build Android Release APK
+      # Build Debug APK (Immediately installable on any Android phone)
+      - name: Build Installable Android APK
         working-directory: android
-        run: ./gradlew assembleRelease --no-daemon
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
 
-      # Build AAB (Android App Bundle for Google Play Store)
-      - name: Build Android Release AAB
+      # Build Release AAB (Android App Bundle for Google Play Store)
+      - name: Build Play Store Android AAB
         working-directory: android
-        run: ./gradlew bundleRelease --no-daemon
+        run: ./gradlew bundleRelease --no-daemon --stacktrace
 
-      # Sign APK with auto-generated release key so it is directly installable on any Android phone
-      - name: Sign Android Release APK
-        run: |
-          KEYSTORE_FILE=android/release.keystore
-          keytool -genkey -v -keystore $KEYSTORE_FILE -alias careerguide -keyalg RSA -keysize 2048 -validity 10000 -storepass careerguide123 -keypass careerguide123 -dname "CN=CareerGuide, OU=App, O=CareerGuide, L=Bengaluru, S=KA, C=IN"
-          
-          # Find apksigner in Android SDK
-          APKSIGNER=$(find $ANDROID_SDK_ROOT/build-tools -name apksigner | sort -r | head -n 1)
-          ZIPALIGN=$(find $ANDROID_SDK_ROOT/build-tools -name zipalign | sort -r | head -n 1)
-          
-          UNSIGNED_APK=$(find android/app/build/outputs/apk/release -name "*.apk" | head -n 1)
-          $ZIPALIGN -v -p 4 $UNSIGNED_APK android/app/build/outputs/apk/release/CareerGuide-aligned.apk
-          $APKSIGNER sign --ks $KEYSTORE_FILE --ks-pass pass:careerguide123 --ks-key-alias careerguide --key-pass pass:careerguide123 --out android/app/build/outputs/apk/release/CareerGuide-v1.0-release.apk android/app/build/outputs/apk/release/CareerGuide-aligned.apk
-
-      - name: Prepare Artifacts
+      - name: Prepare Release Artifacts
         run: |
           mkdir -p build-artifacts
-          cp android/app/build/outputs/apk/release/CareerGuide-v1.0-release.apk build-artifacts/CareerGuide-v1.0-release.apk || cp android/app/build/outputs/apk/release/*.apk build-artifacts/CareerGuide-Release.apk
-          cp android/app/build/outputs/bundle/release/*.aab build-artifacts/CareerGuide-v1.0-release.aab || true
+          # Copy APK
+          cp android/app/build/outputs/apk/debug/app-debug.apk build-artifacts/CareerGuide-v1.0.apk
+          # Copy AAB
+          cp android/app/build/outputs/bundle/release/app-release.aab build-artifacts/CareerGuide-v1.0.aab || cp android/app/build/outputs/bundle/release/*.aab build-artifacts/CareerGuide-v1.0.aab || true
+          ls -la build-artifacts/
 
-      # Upload Artifacts so they are directly downloadable from the GitHub Actions run
-      - name: Upload Android APK Artifact
+      # Upload Artifacts to GitHub Actions Run
+      - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: CareerGuide-Android-APK
-          path: build-artifacts/*.apk
+          path: build-artifacts/CareerGuide-v1.0.apk
           retention-days: 30
 
-      - name: Upload Android AAB Artifact
+      - name: Upload Android AAB (Play Store)
         uses: actions/upload-artifact@v4
         with:
           name: CareerGuide-Android-AAB
-          path: build-artifacts/*.aab
+          path: build-artifacts/CareerGuide-v1.0.aab
           retention-days: 30
 
-      # Create automated GitHub Release with direct download links
-      - name: Create Automated Release
+      # Create Automated GitHub Release with Download Links
+      - name: Create Automated GitHub Release
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.${{ github.run_number }}
-          name: Career Guide Android v1.0.${{ github.run_number }}
+          tag_name: release-v1.0.${{ github.run_number }}
+          name: Career Guide v1.0.${{ github.run_number }}
           body: |
-            ## 📱 Career Guide Android Release
-            
-            Automatic build triggered by commit `${{ github.sha }}`.
+            ## 📱 Career Guide Mobile App — Release v1.0.${{ github.run_number }}
             
             ### 📥 Download Links:
-            - **Installable APK**: Download `CareerGuide-v1.0-release.apk` below and install directly on your Android phone.
-            - **Play Store AAB**: Download `CareerGuide-v1.0-release.aab` for Google Play Console submission.
-            - **Live Web App**: Hosted automatically on GitHub Pages.
+            - **[📲 Download Android APK](https://github.com/${{ github.repository }}/releases/download/release-v1.0.${{ github.run_number }}/CareerGuide-v1.0.apk)** (Directly installable on any Android phone)
+            - **[📦 Download Play Store AAB](https://github.com/${{ github.repository }}/releases/download/release-v1.0.${{ github.run_number }}/CareerGuide-v1.0.aab)** (For Google Play Console submission)
+            
+            ### 🌐 Live Web App:
+            - [https://${{ github.repository_owner }}.github.io/career-guide-app/](https://${{ github.repository_owner }}.github.io/career-guide-app/)
           files: |
-            build-artifacts/*.apk
-            build-artifacts/*.aab
+            build-artifacts/CareerGuide-v1.0.apk
+            build-artifacts/CareerGuide-v1.0.aab
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  # ---------------------------------------------------------------------------
+  # 2. DEPLOY LIVE WEB APPLICATION TO GITHUB PAGES
+  # ---------------------------------------------------------------------------
+  deploy-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Web Application
+        run: npm run build
+
+      - name: Deploy to GitHub Pages Branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
