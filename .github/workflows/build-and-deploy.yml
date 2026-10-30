@@ -42,9 +42,10 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Accept Android SDK Licenses
+      - name: Setup Android SDK Platform 35
         run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+          yes | sdkmanager --licenses || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0" || true
 
       - name: Grant Execute Permissions for gradlew
         run: chmod +x android/gradlew
@@ -64,12 +65,8 @@ jobs:
       - name: Collect Release Artifacts
         run: |
           mkdir -p build-artifacts
-          echo "=== Finding all APKs ==="
-          find android/ -name "*.apk"
-          echo "=== Finding all AABs ==="
-          find android/ -name "*.aab"
-          cp -v $(find android/app/build/outputs/ -name "*.apk" | head -n 1) build-artifacts/CareerGuide-v1.0.apk
-          cp -v $(find android/app/build/outputs/ -name "*.aab" | head -n 1) build-artifacts/CareerGuide-v1.0.aab
+          find android/ -name "*.apk" -exec cp -v {} build-artifacts/CareerGuide-v1.0.apk \;
+          find android/ -name "*.aab" -exec cp -v {} build-artifacts/CareerGuide-v1.0.aab \;
           echo "=== Contents of build-artifacts ==="
           ls -la build-artifacts/
 
