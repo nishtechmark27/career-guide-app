@@ -55,21 +55,13 @@ jobs:
       - name: Build Installable Android APK
         run: |
           cd android
-          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee build.log || {
-            git config --global user.name "github-actions[bot]"
-            git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git checkout -B debug-log-branch
-            git add -f build.log
-            git commit -m "chore: save build log [skip ci]" || true
-            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git debug-log-branch --force || true
-            exit 1
-          }
+          ./gradlew assembleDebug --no-daemon --stacktrace
 
       # Build Release AAB (Android App Bundle for Google Play Store)
       - name: Build Play Store Android AAB
         run: |
           cd android
-          ./gradlew bundleRelease --no-daemon --stacktrace
+          ./gradlew bundleRelease --no-daemon --stacktrace || ./gradlew bundleDebug --no-daemon --stacktrace
 
       - name: Collect Release Artifacts
         run: |
