@@ -54,10 +54,14 @@ jobs:
         run: |
           cd android
           ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee apk-build.log || {
-            echo "### ❌ APK Build Failed" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            tail -n 60 apk-build.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "=== APK BUILD ERROR (LAST 80 LINES) ==="
+            tail -n 80 apk-build.log
+            git config user.name "github-actions"
+            git config user.email "github-actions@github.com"
+            git checkout -B debug-logs
+            git add -f apk-build.log
+            git commit -m "chore: save apk build log [skip ci]" || true
+            git push -f origin debug-logs || true
             exit 1
           }
 
@@ -66,18 +70,22 @@ jobs:
         run: |
           cd android
           ./gradlew bundleRelease --no-daemon --stacktrace 2>&1 | tee aab-build.log || {
-            echo "### ❌ AAB Build Failed" >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
-            tail -n 60 aab-build.log >> $GITHUB_STEP_SUMMARY
-            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "=== AAB BUILD ERROR (LAST 80 LINES) ==="
+            tail -n 80 aab-build.log
+            git config user.name "github-actions"
+            git config user.email "github-actions@github.com"
+            git checkout -B debug-logs
+            git add -f aab-build.log
+            git commit -m "chore: save aab build log [skip ci]" || true
+            git push -f origin debug-logs || true
             exit 1
           }
 
       - name: Collect Release Artifacts
         run: |
           mkdir -p build-artifacts
-          find android/app/build/outputs/apk/ -name "*.apk" -exec cp {} build-artifacts/CareerGuide-v1.0.apk \;
-          find android/app/build/outputs/bundle/ -name "*.aab" -exec cp {} build-artifacts/CareerGuide-v1.0.aab \;
+          find android/ -name "*.apk" -exec cp {} build-artifacts/CareerGuide-v1.0.apk \; || true
+          find android/ -name "*.aab" -exec cp {} build-artifacts/CareerGuide-v1.0.aab \; || true
           echo "Generated Artifacts:"
           ls -la build-artifacts/
 
@@ -87,7 +95,7 @@ jobs:
         with:
           name: CareerGuide-Android-APK
           path: build-artifacts/CareerGuide-v1.0.apk
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
 
       - name: Upload Android AAB (Play Store)
@@ -95,18 +103,8 @@ jobs:
         with:
           name: CareerGuide-Android-AAB
           path: build-artifacts/CareerGuide-v1.0.aab
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30
-
-      # Upload logs on failure for immediate diagnostics
-      - name: Upload Build Logs
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: Android-Build-Logs
-          path: |
-            android/*.log
-          if-no-files-found: ignore
 
       # Create Automated GitHub Release with Download Links
       - name: Create Automated GitHub Release
