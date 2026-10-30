@@ -46,7 +46,7 @@ jobs:
         run: |
           export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
           yes | sdkmanager --licenses || true
-          sdkmanager "platforms;android-35" "platforms;android-34" "build-tools;35.0.0" || true
+          sdkmanager --install "platforms;android-36" "platforms;android-35" "build-tools;36.0.0" || true
 
       - name: Grant Execute Permissions for gradlew
         run: chmod +x android/gradlew
@@ -66,8 +66,8 @@ jobs:
       - name: Collect Release Artifacts
         run: |
           mkdir -p build-artifacts
-          find android/ -name "*.apk" -exec cp -v {} build-artifacts/CareerGuide-v1.0.apk \;
-          find android/ -name "*.aab" -exec cp -v {} build-artifacts/CareerGuide-v1.0.aab \;
+          find android/app/build/outputs/ -name "*.apk" -exec cp -v {} build-artifacts/CareerGuide-v1.0.apk \;
+          find android/app/build/outputs/ -name "*.aab" -exec cp -v {} build-artifacts/CareerGuide-v1.0.aab \;
           echo "=== Contents of build-artifacts ==="
           ls -la build-artifacts/
 
