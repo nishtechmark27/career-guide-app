@@ -22,7 +22,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 22
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -42,18 +42,36 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
+      - name: Accept Android SDK Licenses
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+
       - name: Grant Execute Permissions for gradlew
         run: chmod +x android/gradlew
 
       # Build Debug APK (Directly installable on any Android phone)
       - name: Build Installable Android APK
-        working-directory: android
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: |
+          cd android
+          ./gradlew assembleDebug --no-daemon --stacktrace 2>&1 | tee apk-build.log || {
+            echo "### ❌ APK Build Failed" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            tail -n 60 apk-build.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit 1
+          }
 
       # Build Release AAB (Android App Bundle for Google Play Store)
       - name: Build Play Store Android AAB
-        working-directory: android
-        run: ./gradlew bundleRelease --no-daemon --stacktrace
+        run: |
+          cd android
+          ./gradlew bundleRelease --no-daemon --stacktrace 2>&1 | tee aab-build.log || {
+            echo "### ❌ AAB Build Failed" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            tail -n 60 aab-build.log >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            exit 1
+          }
 
       - name: Collect Release Artifacts
         run: |
@@ -79,6 +97,16 @@ jobs:
           path: build-artifacts/CareerGuide-v1.0.aab
           if-no-files-found: error
           retention-days: 30
+
+      # Upload logs on failure for immediate diagnostics
+      - name: Upload Build Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Android-Build-Logs
+          path: |
+            android/*.log
+          if-no-files-found: ignore
 
       # Create Automated GitHub Release with Download Links
       - name: Create Automated GitHub Release
@@ -112,7 +140,7 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 22
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
