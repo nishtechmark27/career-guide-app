@@ -1,0 +1,780 @@
+{
+  "users": [
+    {
+      "id": "usr_1",
+      "name": "Student User",
+      "email": "student@email.com",
+      "password": "password123",
+      "role": "student",
+      "educationLevel": "Undergraduate (3rd Year, Computer Science)",
+      "college": "National Institute of Technology",
+      "bio": "Aspiring AI/ML Engineer passionate about neural networks, data structures, and computer vision.",
+      "targetCareer": "AI/ML Engineer",
+      "skills": [
+        "Python",
+        "SQL",
+        "Machine Learning",
+        "Data Analysis",
+        "React"
+      ],
+      "joinDate": "October 2026",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      "id": "usr_admin",
+      "name": "Platform Administrator",
+      "email": "admin@careerguide.com",
+      "password": "adminpassword123",
+      "role": "admin",
+      "educationLevel": "System Administrator",
+      "college": "Career Guide Headquarters",
+      "bio": "Platform Administrator managing opportunities, careers, verified links, and student applications.",
+      "targetCareer": "Administration",
+      "skills": [
+        "Management",
+        "Platform Ops",
+        "Security"
+      ],
+      "joinDate": "September 2026",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+    }
+  ],
+  "careers": [
+    {
+      "id": "ai-ml-engineer",
+      "title": "AI/ML Engineer",
+      "tagline": "Build systems that learn from data and automate complex tasks.",
+      "matchPercent": 94,
+      "demand": "Very High Demand",
+      "demandBadge": "high",
+      "category": "Tech",
+      "salaryRange": "₹14–32 LPA",
+      "experienceLevel": "Entry to Mid",
+      "growthRate": "+38% (Explosive Growth)",
+      "chips": [
+        "₹14–32 LPA",
+        "High Demand",
+        "Remote/Hybrid"
+      ],
+      "overview": {
+        "description": "Develop, evaluate, and ship neural networks and statistical models that power real-time inference, search, robotics, and natural language understanding.",
+        "keySkills": [
+          "Python",
+          "PyTorch / TensorFlow",
+          "Data Pipelines",
+          "MLOps",
+          "Transformers",
+          "Linear Algebra"
+        ],
+        "education": "B.Tech/B.S. in Computer Science, Data Science, Artificial Intelligence, or equivalent portfolio.",
+        "responsibilities": [
+          "Architect, train, and benchmark deep learning models for classification, regression, and generation.",
+          "Construct scalable feature extraction and dataset preparation pipelines.",
+          "Profile latency and optimize inference on GPU, TPU, and edge microcontrollers.",
+          "Deploy containerized inference endpoints through REST and gRPC architectures."
+        ],
+        "roadmapId": "ai-ml-engineer"
+      }
+    },
+    {
+      "id": "data-analyst",
+      "title": "Data Analyst",
+      "tagline": "Turn numbers into actionable business insights.",
+      "matchPercent": 88,
+      "demand": "Entry friendly",
+      "demandBadge": "entry",
+      "category": "Tech",
+      "salaryRange": "₹6–12 LPA",
+      "experienceLevel": "Entry level",
+      "growthRate": "+26% (Steady Growth)",
+      "chips": [
+        "₹6–12 LPA",
+        "Entry friendly",
+        "Hybrid"
+      ],
+      "overview": {
+        "description": "Extract, clean, and visualize enterprise metrics to empower leadership to make high-impact data-driven decisions.",
+        "keySkills": [
+          "SQL",
+          "PowerBI / Tableau",
+          "Python / R",
+          "Statistics",
+          "Excel"
+        ],
+        "education": "Degree in Business, Statistics, Economics, Mathematics, Engineering, or relevant certification.",
+        "responsibilities": [
+          "Query relational databases and cloud data warehouses with optimized SQL.",
+          "Synthesize exploratory data findings into interactive dashboards.",
+          "Identify seasonal variances, user funnel drop-offs, and operational bottlenecks."
+        ],
+        "roadmapId": "data-analyst"
+      }
+    },
+    {
+      "id": "cloud-devops-engineer",
+      "title": "Cloud & DevOps Engineer",
+      "tagline": "Architect robust, scalable cloud infrastructure and CI/CD automation.",
+      "matchPercent": 84,
+      "demand": "High demand",
+      "demandBadge": "high",
+      "category": "Tech",
+      "salaryRange": "₹10–24 LPA",
+      "experienceLevel": "Entry to Mid",
+      "growthRate": "+30% (Rapid Growth)",
+      "chips": [
+        "₹10–24 LPA",
+        "High Demand",
+        "Remote"
+      ],
+      "overview": {
+        "description": "Manage scalable cloud resources across AWS, GCP, and Azure, orchestrating automated CI/CD deployment pipelines.",
+        "keySkills": [
+          "Docker",
+          "Kubernetes",
+          "AWS / GCP",
+          "Terraform",
+          "GitHub Actions",
+          "Linux"
+        ],
+        "education": "Degree in IT, Computer Science, or Cloud Certifications (AWS Solutions Architect / CKA).",
+        "responsibilities": [
+          "Deploy microservices with high availability and self-healing resilience.",
+          "Maintain CI/CD automation pipelines for automated test and delivery.",
+          "Monitor infrastructure reliability, response latency, and disaster recovery."
+        ],
+        "roadmapId": "cloud-devops-engineer"
+      }
+    },
+    {
+      "id": "ux-designer",
+      "title": "Product UX/UI Designer",
+      "tagline": "Craft intuitive, delightful user experiences for digital products.",
+      "matchPercent": 78,
+      "demand": "Growing",
+      "demandBadge": "growing",
+      "category": "Design",
+      "salaryRange": "₹8–18 LPA",
+      "experienceLevel": "Entry to Mid",
+      "growthRate": "+24% (Expanding)",
+      "chips": [
+        "₹8–18 LPA",
+        "Growing",
+        "Remote Friendly"
+      ],
+      "overview": {
+        "description": "Conduct user research, design wireframes, high-fidelity prototypes, and design systems for mobile and web apps.",
+        "keySkills": [
+          "Figma",
+          "User Research",
+          "Wireframing",
+          "Usability Testing",
+          "Design Systems"
+        ],
+        "education": "Degree in Design, HCI, Multimedia, or demonstrated design portfolio.",
+        "responsibilities": [
+          "Conduct qualitative and quantitative user interviews to discover pain points.",
+          "Build wireframes, interactive prototypes, and design tokens.",
+          "Test prototypes with users and iterate designs based on behavioral analytics."
+        ],
+        "roadmapId": "ux-designer"
+      }
+    },
+    {
+      "id": "cybersecurity-analyst",
+      "title": "Cybersecurity Analyst",
+      "tagline": "Defend computer networks and systems against malicious attacks.",
+      "matchPercent": 82,
+      "demand": "Critical demand",
+      "demandBadge": "high",
+      "category": "Tech",
+      "salaryRange": "₹9–22 LPA",
+      "experienceLevel": "Entry to Mid",
+      "growthRate": "+33% (Critical)",
+      "chips": [
+        "₹9–22 LPA",
+        "Critical Demand",
+        "On-site/Hybrid"
+      ],
+      "overview": {
+        "description": "Monitor security operations centers (SOC), identify network vulnerabilities, and respond to cyber threat intrusions.",
+        "keySkills": [
+          "Network Security",
+          "Ethical Hacking",
+          "SIEM",
+          "Penetration Testing",
+          "Cryptography"
+        ],
+        "education": "B.Tech/B.Sc. in Computer Science or Security certifications (CompTIA Security+, CEH).",
+        "responsibilities": [
+          "Inspect security logs for abnormal intrusion patterns.",
+          "Perform vulnerability scans and coordinate system patching.",
+          "Formulate incident response playbooks and data recovery plans."
+        ],
+        "roadmapId": "cybersecurity-analyst"
+      }
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-ml-specialization",
+      "title": "Machine Learning Specialization",
+      "provider": "Coursera / Stanford University",
+      "instructor": "Andrew Ng",
+      "category": "Machine Learning",
+      "level": "Beginner to Intermediate",
+      "pricingType": "Free Audit / Paid Certificate",
+      "fees": "Free to Audit (₹3,999/mo for certificate)",
+      "duration": "3 months (8 hrs/week)",
+      "rating": 4.9,
+      "enrolledCount": "480,000+",
+      "badge": "Industry Standard",
+      "eligibility": "Basic high-school mathematics and introductory Python syntax knowledge.",
+      "about": "A foundational online program co-created by DeepLearning.AI and Stanford Online teaching core machine learning algorithms and practical implementation.",
+      "youLearn": [
+        "Supervised machine learning (Linear regression, logistic regression, decision trees)",
+        "Unsupervised learning (K-means, PCA, anomaly detection, recommender systems)",
+        "Reinforcement learning and neural network training best practices"
+      ],
+      "officialUrl": "https://www.coursera.org/specializations/machine-learning-introduction",
+      "chips": [
+        "Coursera",
+        "Stanford",
+        "Andrew Ng",
+        "Verified Certificate"
+      ]
+    },
+    {
+      "id": "course-cs50-harvard",
+      "title": "CS50x: Introduction to Computer Science",
+      "provider": "Harvard University / edX",
+      "instructor": "David J. Malan",
+      "category": "Computer Science",
+      "level": "All Levels",
+      "pricingType": "Free",
+      "fees": "100% Free",
+      "duration": "12 weeks (Self-paced)",
+      "rating": 4.9,
+      "enrolledCount": "5,200,000+",
+      "badge": "World Renowned",
+      "eligibility": "Open to anyone with no prior programming experience required.",
+      "about": "Harvard University's flagship introduction to the intellectual enterprises of computer science and the art of programming.",
+      "youLearn": [
+        "Algorithmic thinking and efficient problem solving",
+        "Low-level concepts: C, memory management, pointers, and data structures",
+        "High-level programming: Python, SQL, HTML/CSS, JavaScript, and Flask"
+      ],
+      "officialUrl": "https://cs50.harvard.edu/x/",
+      "chips": [
+        "Harvard",
+        "100% Free",
+        "Self-paced",
+        "Official Harvard Portal"
+      ]
+    },
+    {
+      "id": "course-nptel-data-structures",
+      "title": "Programming, Data Structures and Algorithms Using Python",
+      "provider": "NPTEL / IIT Madras",
+      "instructor": "Prof. Madhavan Mukund",
+      "category": "Programming",
+      "level": "Undergraduate",
+      "pricingType": "Free",
+      "fees": "Free (₹1,000 optional exam fee for IIT Certificate)",
+      "duration": "8 weeks",
+      "rating": 4.8,
+      "enrolledCount": "125,000+",
+      "badge": "Govt Certified",
+      "eligibility": "College students and learners pursuing college degrees or technical entrance exams.",
+      "about": "Official National Programme on Technology Enhanced Learning (NPTEL) certified course by IIT Madras faculty covering core data structure design.",
+      "youLearn": [
+        "Computational complexity, big-O notation, asymptotic analysis",
+        "Lists, stacks, queues, binary search trees, and heaps",
+        "Sorting algorithms, graph representations, and dynamic programming"
+      ],
+      "officialUrl": "https://nptel.ac.in/courses/106106145",
+      "chips": [
+        "NPTEL",
+        "IIT Madras",
+        "Government Certified",
+        "Academic Credits"
+      ]
+    },
+    {
+      "id": "course-google-data-analytics",
+      "title": "Google Data Analytics Professional Certificate",
+      "provider": "Google Career Certificates / Coursera",
+      "instructor": "Google Certified Instructors",
+      "category": "Data Science",
+      "level": "Beginner",
+      "pricingType": "Paid with Financial Aid",
+      "fees": "Financial Aid Available (or ₹1,200/mo)",
+      "duration": "6 months (10 hrs/week)",
+      "rating": 4.8,
+      "enrolledCount": "2,100,000+",
+      "badge": "Google Certified",
+      "eligibility": "No prior experience or college degree required.",
+      "about": "Hands-on curriculum engineered by Google data scientists preparing learners for in-demand junior data analyst positions.",
+      "youLearn": [
+        "Data cleaning and spreadsheet calculations in Google Sheets & Excel",
+        "Database querying with SQL in BigQuery",
+        "Data visualization in Tableau and statistical programming with R"
+      ],
+      "officialUrl": "https://grow.google/certificates/data-analytics/",
+      "chips": [
+        "Google",
+        "Professional Certificate",
+        "BigQuery",
+        "Tableau"
+      ]
+    },
+    {
+      "id": "course-khan-statistics",
+      "title": "Statistics and Probability Mastery",
+      "provider": "Khan Academy",
+      "instructor": "Sal Khan",
+      "category": "Mathematics",
+      "level": "Foundational",
+      "pricingType": "Free",
+      "fees": "100% Free Forever",
+      "duration": "Self-paced",
+      "rating": 4.9,
+      "enrolledCount": "950,000+",
+      "badge": "Nonprofit Free",
+      "eligibility": "Open to all students building mathematics intuition.",
+      "about": "Comprehensive, visual mastery of statistical theory essential for data analytics, machine learning, and AI model evaluation.",
+      "youLearn": [
+        "Descriptive statistics, variance, standard deviation, and z-scores",
+        "Probability distributions, binomial, and normal bell curves",
+        "Hypothesis testing, confidence intervals, p-values, and linear regression"
+      ],
+      "officialUrl": "https://www.khanacademy.org/math/statistics-probability",
+      "chips": [
+        "Khan Academy",
+        "Free Forever",
+        "Math Foundations"
+      ]
+    }
+  ],
+  "scholarships": [
+    {
+      "id": "nsp-post-matric",
+      "title": "National Scholarship Portal (NSP) Post Matric Scholarship",
+      "provider": "Ministry of Electronics & Information Technology / Ministry of Minority Affairs",
+      "amount": "₹20,000–₹50,000 per year + Tuition waiver",
+      "targetLevel": "Undergraduate / Postgraduate",
+      "category": "Government",
+      "badge": "Open For 2026-27",
+      "badgeType": "default",
+      "deadline": "November 30, 2026",
+      "daysRemaining": 30,
+      "eligibility": "Enrolled in recognized undergraduate/postgraduate degree. Minimum 50% in previous qualifying exam with family income under ₹2.5 LPA.",
+      "documents": "Aadhaar Card, Previous Marksheet, Income Certificate from competent authority, Bank Passbook, College Fee Receipt.",
+      "officialUrl": "https://scholarships.gov.in/",
+      "chips": [
+        "Government of India",
+        "Tuition Fee Waiver",
+        "NSP Verified"
+      ]
+    },
+    {
+      "id": "aicte-pragati",
+      "title": "AICTE Pragati Scholarship for Girl Students",
+      "provider": "All India Council for Technical Education (AICTE)",
+      "amount": "₹50,000 per year for entire course duration",
+      "targetLevel": "Female Technical Students (1st & 2nd Year)",
+      "category": "Government",
+      "badge": "Closes Soon",
+      "badgeType": "warning",
+      "deadline": "November 15, 2026",
+      "daysRemaining": 15,
+      "eligibility": "Female students admitted to 1st year of technical degree/diploma in an AICTE approved institution. Family annual income less than ₹8 LPA.",
+      "documents": "10th & 12th Marksheet, AICTE College Allotment Letter, Annual Family Income Certificate, Bank Account in applicant name.",
+      "officialUrl": "https://www.aicte-india.org/schemes/students-development-schemes/Pragati",
+      "chips": [
+        "AICTE",
+        "Women in STEM",
+        "₹50,000/yr",
+        "Direct Benefit Transfer"
+      ]
+    },
+    {
+      "id": "reliance-foundation-ug",
+      "title": "Reliance Foundation Undergraduate Scholarship",
+      "provider": "Reliance Foundation",
+      "amount": "Up to ₹2,00,000 over course duration",
+      "targetLevel": "1st Year Full-time Undergraduate",
+      "category": "Private Trust",
+      "badge": "Merit-cum-Means",
+      "badgeType": "default",
+      "deadline": "December 5, 2026",
+      "daysRemaining": 35,
+      "eligibility": "First year regular full-time undergraduate students from any stream with minimum 60% in Class 12. Household income below ₹15 LPA.",
+      "documents": "Class 12 marksheet, household income proof, college admission proof, aptitude test score.",
+      "officialUrl": "https://www.reliancefoundation.org/scholarships",
+      "chips": [
+        "Reliance Foundation",
+        "Up to ₹2 Lakhs",
+        "Mentorship Included"
+      ]
+    },
+    {
+      "id": "tata-trusts-education-grant",
+      "title": "Tata Trusts Means & Merit Higher Education Grant",
+      "provider": "Tata Trusts",
+      "amount": "Full or Partial Tuition Support (up to ₹1,50,000)",
+      "targetLevel": "Undergraduate & Professional Courses",
+      "category": "Private Philanthropy",
+      "badge": "High Support",
+      "badgeType": "default",
+      "deadline": "December 20, 2026",
+      "daysRemaining": 50,
+      "eligibility": "Students pursuing engineering, medicine, sciences, and professional streams in recognized Indian universities with stellar academic records.",
+      "documents": "Income tax returns/salary slips, university bonafide certificate, semester grade cards, fee structure document.",
+      "officialUrl": "https://www.tatatrusts.org/our-work/individual-grants-programme/education-grants",
+      "chips": [
+        "Tata Trusts",
+        "Merit Based",
+        "Tuition Grant"
+      ]
+    }
+  ],
+  "internships": [
+    {
+      "id": "intern-aicte-digital-india",
+      "title": "National Internship Portal - Digital India Internship",
+      "company": "Ministry of Electronics & IT (MeitY) / NIC",
+      "sector": "Government",
+      "workType": "Hybrid",
+      "location": "New Delhi / State Capital NIC Centers",
+      "stipend": "₹20,000 / month",
+      "duration": "3 months (Expandable to 6 months)",
+      "deadline": "November 20, 2026",
+      "badge": "Government of India",
+      "badgeType": "default",
+      "eligibility": "Indian students pursuing B.Tech/M.Tech/MCA/B.Sc. with minimum 60% cumulative aggregate.",
+      "roleOverview": "Contribute to national public digital goods, e-governance platforms, Aadhaar/UPI ecosystem microservices, and cyber resilience systems.",
+      "requirements": "Proficiency in Java, Python, REST APIs, database querying, and strong analytical reasoning.",
+      "officialUrl": "https://internship.aicte-india.org/",
+      "chips": [
+        "Government",
+        "MeitY",
+        "₹20,000/mo",
+        "Official Govt Portal"
+      ]
+    },
+    {
+      "id": "intern-flipkart-leap",
+      "title": "Flipkart Leap Internship Program",
+      "company": "Flipkart",
+      "sector": "Private",
+      "workType": "Remote / Hybrid",
+      "location": "Bengaluru, Karnataka",
+      "stipend": "₹50,000 / month",
+      "duration": "3 months",
+      "deadline": "November 28, 2026",
+      "badge": "High Stipend + PPO",
+      "badgeType": "high",
+      "eligibility": "Pre-final and final year students in CS/IT/Data Science disciplines.",
+      "roleOverview": "Collaborate with senior software and data engineers to build high-scale logistics tracking, checkout pipelines, and recommender systems.",
+      "requirements": "Data Structures & Algorithms, Python/Java, SQL, problem-solving curiosity for high-volume transactions.",
+      "officialUrl": "https://www.flipkartcareers.com/",
+      "chips": [
+        "Flipkart",
+        "₹50,000/mo",
+        "Remote/Hybrid",
+        "PPO Track"
+      ]
+    },
+    {
+      "id": "intern-swiggy-product-design",
+      "title": "Product Design & UX Internship",
+      "company": "Swiggy",
+      "sector": "Private",
+      "workType": "On-site",
+      "location": "Bengaluru, Karnataka",
+      "stipend": "₹40,000 / month",
+      "duration": "6 months",
+      "deadline": "December 1, 2026",
+      "badge": "Design Portfolio",
+      "badgeType": "default",
+      "eligibility": "Design, HCI, or multimedia undergraduate students with an active Figma portfolio.",
+      "roleOverview": "Design consumer micro-interactions, refine instant delivery map tracking UI, and run moderated usability testing sessions.",
+      "requirements": "Deep proficiency in Figma, design systems, wireframing, and empathy for consumer behaviors.",
+      "officialUrl": "https://careers.swiggy.com/",
+      "chips": [
+        "Swiggy",
+        "Bengaluru",
+        "₹40,000/mo",
+        "Design Team"
+      ]
+    },
+    {
+      "id": "intern-iit-madras-research",
+      "title": "Computer Vision & Robotics Research Intern",
+      "company": "IIT Madras Research Park",
+      "sector": "Academic / Research",
+      "workType": "On-site",
+      "location": "Chennai, Tamil Nadu",
+      "stipend": "₹25,000 / month",
+      "duration": "2 months (Summer/Winter)",
+      "deadline": "December 15, 2026",
+      "badge": "Research Fellowship",
+      "badgeType": "warning",
+      "eligibility": "Engineering students in 2nd, 3rd, or 4th year with foundational machine learning coursework.",
+      "roleOverview": "Collaborate with doctoral faculty on deep neural networks for autonomous agricultural drone imagery and drone obstacle avoidance.",
+      "requirements": "Python, PyTorch, OpenCV, matrix calculus, clean git hygiene.",
+      "officialUrl": "https://www.iitm.ac.in/",
+      "chips": [
+        "IIT Madras",
+        "Research",
+        "₹25,000/mo",
+        "Academic Fellowship"
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job-tcs-ninja-digital",
+      "title": "Software Engineer (TCS National Qualifier Test)",
+      "company": "Tata Consultancy Services (TCS)",
+      "sector": "Private",
+      "location": "Pan-India (Bengaluru, Hyderabad, Pune, Chennai)",
+      "salary": "₹4.5–9 LPA (Ninja / Digital / Prime Bands)",
+      "type": "Full-Time Placement",
+      "badge": "Fresher Friendly",
+      "openings": 500,
+      "deadline": "November 25, 2026",
+      "eligibility": "Graduating Batch 2025/2026 with 60% throughout 10th, 12th, and Degree without active backlogs.",
+      "roleOverview": "Develop, test, and maintain enterprise software solutions across banking, healthcare, telecom, and cloud infrastructure.",
+      "requirements": "Foundational aptitude, coding in C++/Java/Python, OOPs principles, SQL databases.",
+      "officialUrl": "https://www.tcs.com/careers/india",
+      "chips": [
+        "TCS",
+        "Pan-India",
+        "₹4.5–9 LPA",
+        "National Drive"
+      ]
+    },
+    {
+      "id": "job-zoho-software-developer",
+      "title": "Software Developer & ML Trainee",
+      "company": "Zoho Corporation",
+      "sector": "Private",
+      "location": "Chennai / Tenkasi / Salem",
+      "salary": "₹7.5–12 LPA",
+      "type": "Full-Time Placement",
+      "badge": "Degree Independent",
+      "openings": 45,
+      "deadline": "December 10, 2026",
+      "eligibility": "Open to any degree or discipline; selection is strictly based on practical coding and problem-solving aptitude.",
+      "roleOverview": "Design core web microservices, build real-time collaborative editors, and train applied NLP models for Zoho Office Suite.",
+      "requirements": "Exceptional mastery of Data Structures, C/Java/Python programming, and algorithmic design.",
+      "officialUrl": "https://www.zoho.com/careers/",
+      "chips": [
+        "Zoho",
+        "₹7.5–12 LPA",
+        "Product Engineering",
+        "No Resume Filter"
+      ]
+    },
+    {
+      "id": "job-infosys-specialist-programmer",
+      "title": "Specialist Programmer & Systems Engineer",
+      "company": "Infosys",
+      "sector": "Private",
+      "location": "Bengaluru / Pune / Hyderabad",
+      "salary": "₹6.5–11 LPA",
+      "type": "Full-Time Placement",
+      "badge": "High Coding Standard",
+      "openings": 120,
+      "deadline": "November 18, 2026",
+      "eligibility": "B.E/B.Tech/M.E/M.Tech in any engineering stream with strong coding skills.",
+      "roleOverview": "Architect microservices, optimize cloud databases, and work on client-facing generative AI platforms.",
+      "requirements": "Algorithmic problem solving (LeetCode medium/hard), REST APIs, Docker, and full-stack familiarity.",
+      "officialUrl": "https://www.infosys.com/careers.html",
+      "chips": [
+        "Infosys",
+        "₹6.5–11 LPA",
+        "Specialist Programmer"
+      ]
+    }
+  ],
+  "applications": [
+    {
+      "id": "app_101",
+      "userId": "usr_1",
+      "targetId": "intern-aicte-digital-india",
+      "targetTitle": "Digital India Internship (MeitY)",
+      "category": "internship",
+      "entityName": "Ministry of Electronics & IT",
+      "appliedDate": "2026-10-24",
+      "status": "In Review",
+      "notes": "Application submitted with college NOC and semester marksheet.",
+      "officialPortalUrl": "https://internship.aicte-india.org/"
+    },
+    {
+      "id": "app_102",
+      "userId": "usr_1",
+      "targetId": "course-cs50-harvard",
+      "targetTitle": "CS50x: Introduction to Computer Science",
+      "category": "course",
+      "entityName": "Harvard University",
+      "appliedDate": "2026-10-20",
+      "status": "Accepted",
+      "notes": "Enrolled in Week 3 (Algorithms) module.",
+      "officialPortalUrl": "https://cs50.harvard.edu/x/"
+    },
+    {
+      "id": "app_103",
+      "userId": "usr_1",
+      "targetId": "nsp-post-matric",
+      "targetTitle": "NSP Post Matric Scholarship 2026",
+      "category": "scholarship",
+      "entityName": "National Scholarship Portal",
+      "appliedDate": "2026-10-27",
+      "status": "Applied",
+      "notes": "Application ID generated: NSP2026TN8921.",
+      "officialPortalUrl": "https://scholarships.gov.in/"
+    }
+  ],
+  "roadmaps": {
+    "usr_1_ai-ml-engineer": [
+      {
+        "id": 1,
+        "title": "Python Fundamentals & OOP",
+        "status": "done",
+        "estimatedWeeks": 2,
+        "resource": "Python 3 Official Docs"
+      },
+      {
+        "id": 2,
+        "title": "Linear Algebra & Multivariable Calculus",
+        "status": "done",
+        "estimatedWeeks": 3,
+        "resource": "Khan Academy Math"
+      },
+      {
+        "id": 3,
+        "title": "Data Wrangling with Pandas & NumPy",
+        "status": "done",
+        "estimatedWeeks": 2,
+        "resource": "Kaggle Micro-courses"
+      },
+      {
+        "id": 4,
+        "title": "Supervised Learning Algorithms",
+        "status": "current",
+        "estimatedWeeks": 4,
+        "resource": "Coursera ML Specialization"
+      },
+      {
+        "id": 5,
+        "title": "Deep Neural Networks & PyTorch",
+        "status": "pending",
+        "estimatedWeeks": 5,
+        "resource": "Fast.ai & PyTorch Tutorials"
+      },
+      {
+        "id": 6,
+        "title": "Computer Vision & Transformers",
+        "status": "pending",
+        "estimatedWeeks": 4,
+        "resource": "Hugging Face Course"
+      },
+      {
+        "id": 7,
+        "title": "MLOps, Docker & Inference APIs",
+        "status": "pending",
+        "estimatedWeeks": 3,
+        "resource": "Full Stack Deep Learning"
+      },
+      {
+        "id": 8,
+        "title": "End-to-End Capstone Production Project",
+        "status": "pending",
+        "estimatedWeeks": 4,
+        "resource": "GitHub Portfolio Showcase"
+      }
+    ]
+  },
+  "savedCareers": {
+    "usr_1": [
+      "ai-ml-engineer",
+      "cloud-devops-engineer"
+    ]
+  },
+  "savedOpportunities": {
+    "usr_1": [
+      "course-ml-specialization",
+      "nsp-post-matric",
+      "intern-flipkart-leap"
+    ]
+  },
+  "reminders": [
+    {
+      "id": "rem-1",
+      "userId": "usr_1",
+      "title": "Submit AICTE Pragati Documents",
+      "category": "scholarship",
+      "dueDate": "2026-11-15",
+      "notes": "Collect updated college bonafide certificate before Friday.",
+      "completed": false
+    },
+    {
+      "id": "rem-2",
+      "userId": "usr_1",
+      "title": "Flipkart Leap Coding Assessment Round",
+      "category": "internship",
+      "dueDate": "2026-11-28",
+      "notes": "Review dynamic programming and graph shortest path algorithms.",
+      "completed": false
+    }
+  ],
+  "feedbacks": [
+    {
+      "id": "fb_1",
+      "userId": "usr_1",
+      "userName": "Student User",
+      "userEmail": "student@email.com",
+      "rating": 5,
+      "category": "App Experience",
+      "message": "The roadmap tracking and verified official scholarship links are genuinely helpful. No fake ads!",
+      "timestamp": "2026-10-29T14:20:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "title": "AICTE Pragati Scholarship Closing",
+      "subtitle": "Closes in 15 days · ₹50,000/yr support",
+      "badge": "Urgent",
+      "badgeType": "warning",
+      "timestamp": "15 mins ago",
+      "read": false,
+      "actionType": "scholarship",
+      "targetId": "aicte-pragati"
+    },
+    {
+      "id": "notif-2",
+      "title": "Application Status Updated",
+      "subtitle": "Digital India Internship status moved to 'In Review'",
+      "badge": "Application",
+      "badgeType": "default",
+      "timestamp": "3 hours ago",
+      "read": false,
+      "actionType": "application-tracking",
+      "targetId": "app_101"
+    },
+    {
+      "id": "notif-3",
+      "title": "Recommended Course For Milestone 4",
+      "subtitle": "Machine Learning Specialization by Andrew Ng",
+      "badge": "Roadmap",
+      "badgeType": "default",
+      "timestamp": "Yesterday",
+      "read": true,
+      "actionType": "course",
+      "targetId": "course-ml-specialization"
+    }
+  ]
+}
